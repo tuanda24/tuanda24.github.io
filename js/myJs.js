@@ -138,7 +138,7 @@ $(document).ready(function () {
           text: textConfig.text11,
           confirmButtonColor: "#83d0c9",
           onClose: () => {
-            window.location = "https://tuanda24.github.io/heart.html";
+            window.location = "https://www.facebook.com/tuan.dg.24";
           },
         });
       }
