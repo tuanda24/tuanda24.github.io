@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Đếm ngược đến Tết Âm Lịch</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #333;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        h1 {
+            font-size: 4em;
+            margin-bottom: 20px;
+        }
+        .countdown {
+            font-size: 3.5em;
+            margin-top: 10px;
+        }
+        footer {
+            margin-top: 20px;
+            font-size: 0.9em;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <h1>Tết Âm Lịch</h1>
+    <div class="countdown" id="countdown">Đang tải...</div>
+    <!-- <h1>Đếm ngược đến Tết Dương Lịch</h1>
+    <div class="countdown" id="countdownNewYear">Đang tải...</div> -->
+    <!-- <footer>
+        &copy; 2024 - Tác giả: Bạn
+    </footer> -->
+    </div>
+    <script>
+        function calculateLunarNewYear() {
+            const lunarNewYearDates = {
+                2025: "2025-01-29",
+                2026: "2026-02-16",
+                2027: "2027-02-05"
+            };
+
+            const currentYear = new Date().getFullYear();
+            const lunarNewYearDate = lunarNewYearDates[currentYear] || `${currentYear}-02-01`; 
+            const lunarNewYear = new Date(lunarNewYearDate);
+
+            if (new Date() > lunarNewYear) {
+                const nextYear = currentYear + 1;
+                const nextLunarDate = lunarNewYearDates[nextYear] || `${nextYear}-02-01`;
+                return new Date(nextLunarDate);
+            }
+
+            return lunarNewYear;
+        }
+
+        function updateCountdown() {
+            const now = new Date(new Date().getTime() + 7 * 60 * 60 * 1000);
+            const lunarNewYear = calculateLunarNewYear();
+            const diffLunar = lunarNewYear - now;
+
+
+            if (diffLunar > 0) {
+                const days = Math.floor(diffLunar / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((diffLunar % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((diffLunar % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((diffLunar % (1000 * 60)) / 1000);
+
+                document.getElementById("countdown").textContent = 
+                    `${days} ngày, ${hours} giờ, ${minutes} phút, ${seconds} giây`;
+            } else {
+                document.getElementById("countdown").textContent = "Chúc mừng năm mới!";
+            }
+
+            const newYear = new Date(now.getFullYear() + 1, 0, 1);
+            const diffNewYear = newYear - now;
+
+            if (diffNewYear > 0) {
+                const days = Math.floor(diffNewYear / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((diffNewYear % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((diffNewYear % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((diffNewYear % (1000 * 60)) / 1000);
+
+                document.getElementById("countdownNewYear").textContent = 
+                    `${days} ngày, ${hours} giờ, ${minutes} phút, ${seconds} giây`;
+            } else {
+                document.getElementById("countdownNewYear").textContent = "Chúc mừng năm mới!";
+            }
+        
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+        
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>
