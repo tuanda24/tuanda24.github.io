@@ -6,7 +6,10 @@
     font-style: normal;
 
 }
+
 body {
+  color: #00ff00;
+  
   background: linear-gradient(180deg, rgb(255, 72, 72) 0%, rgb(252, 5, 5) 100%);
   overflow: hidden;
     display: flex;
