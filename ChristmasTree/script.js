@@ -1,51 +1,6 @@
-  "object" != typeof window.CP && (window.CP = {}),
-  (window.CP.PenTimer = {
-    programNoLongerBeingMonitored: !1,
-    timeOfFirstCallToShouldStopLoop: 0,
-    _loopExits: {},
-    _loopTimers: {},
-    START_MONITORING_AFTER: 2e3,
-    STOP_ALL_MONITORING_TIMEOUT: 5e3,
-    MAX_TIME_IN_LOOP_WO_EXIT: 2200,
-    exitedLoop: function (E) {
-      this._loopExits[E] = !0;
-    },
-    shouldStopLoop: function (E) {
-      if (this.programKilledSoStopMonitoring) return !0;
-      if (this.programNoLongerBeingMonitored) return !1;
-      if (this._loopExits[E]) return !1;
-      var _ = this._getTime();
-      if (0 === this.timeOfFirstCallToShouldStopLoop)
-        return (this.timeOfFirstCallToShouldStopLoop = _), !1;
-      var o = _ - this.timeOfFirstCallToShouldStopLoop;
-      if (o < this.START_MONITORING_AFTER) return !1;
-      if (o > this.STOP_ALL_MONITORING_TIMEOUT)
-        return (this.programNoLongerBeingMonitored = !0), !1;
-      try {
-        this._checkOnInfiniteLoop(E, _);
-      } catch {
-        return (
-          this._sendErrorMessageToEditor(),
-          (this.programKilledSoStopMonitoring = !0),
-          !0
-        );
-      }
-      return !1;
-    },
-
-    _checkOnInfiniteLoop: function (E, _) {
-      if (!this._loopTimers[E]) return (this._loopTimers[E] = _), !1;
-      if (_ - this._loopTimers[E] > this.MAX_TIME_IN_LOOP_WO_EXIT)
-        throw "Infinite Loop found on loop: " + E;
-    },
-    _getTime: function () {
-      return Date.now();
-    },
-  }),
-  (window.CP.shouldStopExecution = function (E) {
-    var _ = window.CP.PenTimer.shouldStopLoop(E);
-    return 
-  }),
-  (window.CP.exitedLoop = function (E) {
-    window.CP.PenTimer.exitedLoop(E);
-  });
+(function(){function r(a){gsap.killTweensOf(a,{opacity:!0});gsap.fromTo(a,{opacity:1},{duration:.07,opacity:Math.random(),repeat:-1})}function t(a){e&&(a=l[d],gsap.set(a,{x:gsap.getProperty(".pContainer","x"),y:gsap.getProperty(".pContainer","y"),scale:m()}),gsap.timeline().to(a,{duration:gsap.utils.random(.61,6),physics2D:{velocity:gsap.utils.random(-23,23),angle:gsap.utils.random(-180,180),gravity:gsap.utils.random(-6,50)},scale:0,rotation:gsap.utils.random(-123,360),ease:"power1",onStart:r,onStartParams:[a],
+onRepeat:function(b){gsap.set(b,{scale:m()})},onRepeatParams:[a]}),d++,d=201<=d?0:d)}MorphSVGPlugin.convertToPath("polygon");document.querySelector(".pContainer");var u=document.querySelector(".mainSVG");document.querySelector("#star");var c=document.querySelector(".sparkle");document.querySelector("#tree");var e=!0,n="#E8F6F8 #ACE8F8 #F6FBFE #A2CBDC #B74551 #5DBA72 #910B28 #910B28 #446D39".split(" "),p=["#star","#circ","#cross","#heart"],l=[],d=0;gsap.set("svg",{visibility:"visible"});gsap.set(c,
+{transformOrigin:"50% 50%",y:-100});c=function(a){var b=[],f=MotionPathPlugin.getRawPath(a)[0];f.forEach(function(v,g){var h={};h.x=f[2*g];h.y=f[2*g+1];g%2&&b.push(h)});return b};c(".treePath");var q=c(".treeBottomPath");c=gsap.timeline({delay:0,repeat:0});var k,m=gsap.utils.random(.5,3,.001,!0);(function(){for(var a=201,b;-1<--a;)b=document.querySelector(p[a%p.length]).cloneNode(!0),u.appendChild(b),b.setAttribute("fill",n[a%n.length]),b.setAttribute("class","particle"),l.push(b),gsap.set(b,{x:-100,
+y:-100,transformOrigin:"50% 50%"})})();(function(){k=gsap.timeline({onUpdate:t});k.to(".pContainer, .sparkle",{duration:6,motionPath:{path:".treePath",autoRotate:!1},ease:"linear"}).to(".pContainer, .sparkle",{duration:1,onStart:function(){e=!1},x:q[0].x,y:q[0].y}).to(".pContainer, .sparkle",{duration:2,onStart:function(){e=!0},motionPath:{path:".treeBottomPath",autoRotate:!1},ease:"linear"},"-=0").from(".treeBottomMask",{duration:2,drawSVG:"0% 0%",stroke:"#FFF",ease:"linear"},"-=2")})();c.from([".treePathMask",
+".treePotMask"],{drawSVG:"0% 0%",stroke:"#FFF",stagger:{each:6},duration:gsap.utils.wrap([6,1,2]),ease:"linear"}).from(".treeStar",{duration:3,scaleY:0,scaleX:.15,transformOrigin:"50% 50%",ease:"elastic(1,0.5)"},"-=4").to(".sparkle",{duration:3,opacity:0,ease:"rough({strength: 2, points: 100, template: linear, taper: both, randomize: true, clamp: false})"},"-=0").to(".treeStarOutline",{duration:1,opacity:1,ease:"rough({strength: 2, points: 16, template: linear, taper: none, randomize: true, clamp: false})"},
+"+=1");c.add(k,0);gsap.globalTimeline.timeScale(1.5); k.vars.onComplete = function() { gsap.to('foreignObject', { opacity: 1 }) } })();
