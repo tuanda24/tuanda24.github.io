@@ -340,6 +340,12 @@ h4 {
   line-height: 5px;
   transform: rotate(-10deg);
   padding: 0 0 0 20px;
+  
+}
+@media only screen and (max-width: 600px) {
+  .card .details p {
+    font-size: 12px;
+  }
 }
 
 .card .details h4 {
