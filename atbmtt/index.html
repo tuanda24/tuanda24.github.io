@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elgama</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <form action="" id="form">
+            <div class="box">
+                <!-- Tạo khoá -->
+                <div class="create-key">
+                    <fieldset>
+                        <legend>Tạo khoá</legend>
+                        <!-- public key -->
+                        <div class="text">
+                            Khoá công khai (P,a,d)
+                        </div>
+                        <div class="content">
+                            <div class="text-item">
+                                <label for="">
+                                    Số nguyên tố P:
+                                </label>
+                            </div>
+                            <div class="input-var">
+                                <input type="text" id="soNguyenTo" title="isPrime">
+                            </div>
+                        </div>
+                        <div class="content">
+                            <div class="text-item">
+                                <label for="">
+                                    Số α:
+                                </label>
+                            </div>
+                            <div class="input-var">
+                                <input type="text" name="" id="soAlpha" title="Alpha">
+                            </div>
+                        </div>
+                        <div class="content">
+                            <div class="text-item">
+                                <label for="">
+                                    (β = α^a mod P) Số β:
+                                </label>
+                            </div>
+                            <div class="input-var">
+                                <input type="text" name="" id="soBeta" title="Beta" disabled>
+                            </div>
+                        </div>
+                        <!-- primary key -->
+                        <div class="text">
+                            Khoá bí mật (a)
+                        </div>
+                        <div class="content">
+                            <div class="text-item">
+                                <label for="">
+                                    Số nguyên a:
+                                </label>
+                            </div>
+                            <div class="input-var">
+                                <input type="text" name="" id="soA" title="A">
+                            </div>
+                        </div>
+
+                        <div class="button">
+                            <div class="btn-options">
+                                <input type="button" value="Tạo khoá ngẫu nhiên" onclick="khoaNgauNhien()">
+                            </div>
+                            <div class="btn-options">
+                                <input type="button" value="Tạo khoá tuỳ chọn" onclick="khoaTuyChon()">
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+                <!-- Xử lý -->
+                <div class="signature">
+                    <!-- Thực hiện ký -->
+                    <div class="confirm-key">
+                        <fieldset>
+                            <legend>Thực hiện ký</legend>
+                            <div class="content">
+                                <div class="text-content">
+                                    Số K:
+                                </div>
+                                <div class="input-var">
+                                    <input type="text" name="" placeholder="Số ngẫu nhiên" title="K" id="soK">
+                                </div>
+                            </div>
+                            <div class="content">
+                                <div class="text-content">
+                                    Số Y:
+                                </div>
+                                <div class="input-var">
+                                    <input type="text" name="" placeholder="(Y = α^K mod P)" title="Y" id="soY"
+                                        disabled>
+                                </div>
+                            </div>
+                            <div class="text">
+                                <div class="text-head">
+                                    Nội dung file ký
+                                </div>
+                                <div class="file-preview">
+                                    <textarea name="file-preview" id="file-preview" title="file-preview" cols="30"
+                                        rows="10"></textarea>
+                                </div>
+                                <div class="input-file">
+                                    <input type="file" name="" id="inputFile" title="input file"
+                                        onchange="onMyfileChange(this)" />
+                                    <input type="button" name="" value="Show preview" id="showPreview"
+                                        title="show preview" onclick="readFileA()" />
+                                </div>
+                            </div>
+                            <div class="input-content">
+                                <div class="text-title">
+                                    Chữ ký vào File
+                                </div>
+                                <div class="input-message">
+                                    <textarea title="display hashfile" id="hashFile"></textarea>
+                                </div>
+                                <div class="input-btn">
+                                    <button type="button" onclick="kyVanBan()">Ký văn bản</button>
+                                    <button type="button" onclick="reset()">Reset</button>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <!-- Check -->
+                    <div class="check">
+                        <fieldset>
+                            <legend>Kiểm tra</legend>
+                            <div class="content">
+                                <div class="text-content">
+                                    Gamal:
+                                </div>
+                                <div class="input-var">
+                                    <input type="text" name="" title="Gamal" id="displayGamal" disabled>
+                                </div>
+                            </div>
+                            <div class="content">
+                                <div class="text-content">
+                                    Delta:
+                                </div>
+                                <div class="input-var">
+                                    <input type="text" name="" title="Delta" id="displayDelta" disabled>
+                                </div>
+                            </div>
+                            <div class="text">
+                                <div class="text-head">
+                                    Nội dung file kiểm tra
+                                </div>
+                                <div class="file-preview">
+                                    <textarea name="after-file-preview" id="after-file-preview"
+                                        title="after-file-preview" cols="30" rows="10"></textarea>
+                                </div>
+                                <div class="input-file">
+                                    <input type="file" name="" id="selected-file" title="input file"
+                                        onchange="onMyfileChange_value(this)" />
+                                    <input type="button" name="" value="Show preview" id="showPreview-after"
+                                        title="show preview" onclick="readFileB()" />
+                                </div>
+                            </div>
+                            <div class="input-content">
+                                <div class="text-title">
+                                    Chữ ký File kiểm tra
+                                </div>
+                                <div class="input-message">
+                                    <textarea title="display hashfile" id="hashFile-txt"></textarea>
+                                </div>
+                                <div class="input-btn">
+                                    <button type="button" onclick="kiemTraVanBan()">Kiểm tra</button>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                </div>
+
+            </div>
+        </form>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>

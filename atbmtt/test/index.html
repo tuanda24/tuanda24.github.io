@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ElGamal Digital Signature — Demo (HTML/CSS/JS)</title>
+  <style>
+    :root{
+      --bg:#0f172a;        /* slate-900 */
+      --card:#111827;      /* gray-900 */
+      --muted:#94a3b8;     /* slate-400 */
+      --text:#e5e7eb;      /* gray-200 */
+      --accent:#38bdf8;    /* sky-400 */
+      --accent-2:#22d3ee;  /* cyan-400 */
+      --ok:#22c55e;        /* green-500 */
+      --bad:#ef4444;       /* red-500 */
+      --warn:#f59e0b;      /* amber-500 */
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --radius: 18px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; font:16px/1.5 ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      background: radial-gradient(1200px 600px at 20% -10%, rgba(56,189,248,.15), transparent),
+                  radial-gradient(900px 500px at 120% 10%, rgba(34,211,238,.15), transparent), var(--bg);
+      color:var(--text);
+    }
+    header{
+      max-width:1100px; margin:32px auto 18px; padding:0 16px;
+    }
+    h1{font-size:clamp(24px,2.5vw,36px); margin:0 0 6px; letter-spacing:.3px}
+    .sub{color:var(--muted)}
+
+    .grid{display:grid; grid-template-columns:1fr; gap:16px; max-width:1100px; margin:0 auto; padding:0 16px 36px}
+    @media (min-width: 980px){
+      .grid{grid-template-columns: 1.2fr 1fr}
+    }
+
+    .card{background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.015)); border:1px solid rgba(255,255,255,.06); border-radius:var(--radius); box-shadow:var(--shadow); padding:18px}
+    .card h2{margin:0 0 10px; font-size:18px}
+    .card .row{display:grid; grid-template-columns: 150px 1fr; gap:10px; align-items:center; margin:8px 0}
+    .card .row textarea,
+    .card .row input{width:100%; background:#0b1220; border:1px solid rgba(255,255,255,.08); color:var(--text); padding:10px 12px; border-radius:12px}
+    .card .row textarea{min-height:80px; resize:vertical}
+    .muted{color:var(--muted); font-size:13px}
+
+    .btns{display:flex; flex-wrap:wrap; gap:10px; margin-top:10px}
+    button{appearance:none; border:0; padding:10px 14px; border-radius:12px; background:linear-gradient(135deg, var(--accent), var(--accent-2)); color:#001420; font-weight:700; cursor:pointer}
+    button.secondary{background:transparent; color:var(--text); border:1px solid rgba(255,255,255,.18)}
+    button.warn{background:linear-gradient(135deg, var(--warn), #f97316); color:#160e00}
+
+    code.kv{display:block; white-space:pre-wrap; word-break:break-word; background:#0b1220; border:1px solid rgba(255,255,255,.08); padding:12px; border-radius:12px}
+
+    .ok{color:var(--ok)}
+    .bad{color:var(--bad)}
+    .mono{font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace}
+
+    .footer{max-width:1100px; margin:20px auto 50px; padding:0 16px; color:var(--muted); font-size:13px}
+    .hl{color:var(--accent)}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>ElGamal Digital Signature — HTML/CSS/JS</h1>
+    <div class="sub">Sinh khóa, ký và kiểm tra chữ ký số hoàn toàn <b>client‑side</b> (không server). Dùng <span class="hl">BigInt</span> và <span class="hl">Web Crypto SHA‑256</span>.</div>
+  </header>
+
+  <main class="grid">
+    <section class="card">
+      <h2>1) Sinh / Nạp khóa</h2>
+      <div class="row"><label class="muted">Độ dài p (bit)</label><input id="bits" type="number" min="40" max="256" value="96"/></div>
+      <div class="btns">
+        <button id="btnGen">Sinh khóa</button>
+        <button id="btnExport">Xuất khóa</button>
+        <label class="secondary btnlike"><input type="file" id="filePub" accept="application/json" hidden><button class="secondary" id="btnImportPub">Nạp khóa công khai</button></label>
+        <label class="secondary btnlike"><input type="file" id="filePriv" accept="application/json" hidden><button class="secondary" id="btnImportPriv">Nạp khóa bí mật</button></label>
+        <button class="warn" id="btnClear">Xóa khóa khỏi bộ nhớ</button>
+      </div>
+      <p class="muted">Khóa công khai: <span class="mono">(p, g, y)</span> — Khóa bí mật: <span class="mono">(p, g, x)</span></p>
+      <h3 class="muted">Khóa công khai</h3>
+      <code class="kv mono" id="pubView">—</code>
+      <h3 class="muted">Khóa bí mật</h3>
+      <code class="kv mono" id="privView">—</code>
+    </section>
+
+    <section class="card">
+      <h2>2) Ký thông điệp</h2>
+      <div class="row"><label>Nội dung</label><textarea id="signMsg" placeholder="Nhập thông điệp cần ký..."></textarea></div>
+      <div class="btns"><button id="btnSign">Ký</button><button class="secondary" id="btnSaveSig">Lưu chữ ký</button></div>
+      <h3 class="muted">Kết quả chữ ký {r, s}</h3>
+      <code class="kv mono" id="sigView">—</code>
+      <p class="muted">Công thức: r = g^k mod p; s = k^{-1}(H(M) − x·r) mod (p−1)</p>
+    </section>
+
+    <section class="card">
+      <h2>3) Kiểm tra chữ ký</h2>
+      <div class="row"><label>Nội dung</label><textarea id="verMsg" placeholder="Dán thông điệp cần kiểm tra..."></textarea></div>
+      <div class="row"><label>r</label><input id="verR" placeholder="số nguyên"/></div>
+      <div class="row"><label>s</label><input id="verS" placeholder="số nguyên"/></div>
+      <div class="btns">
+        <button id="btnVerify">Kiểm tra</button>
+        <label class="secondary btnlike"><input type="file" id="fileSig" accept="application/json" hidden><button class="secondary" id="btnLoadSig">Nạp chữ ký từ file</button></label>
+      </div>
+      <p id="verResult" class="muted">—</p>
+      <p class="muted">Kiểm: g^{H(M)} ≟ y^r · r^s (mod p)</p>
+    </section>
+
+    <section class="card">
+      <h2>Ghi chú bảo mật</h2>
+      <ul>
+        <li>Dùng <b>SHA‑256</b> thật (Web Crypto) để băm, sau đó lấy <code>mod (p−1)</code>.</li>
+        <li>Demo sinh số nguyên tố (Miller–Rabin) và tìm căn nguyên thủy, phù hợp học thuật. Muốn bảo mật thực tế: cần số lớn hơn &gt; 2048 bit (cần BigInt thư viện lớn và tối ưu).</li>
+        <li>Tất cả tính toán chạy trong trình duyệt; dữ liệu không rời máy bạn.</li>
+      </ul>
+    </section>
+  </main>
+
+  <div class="footer">© Demo học thuật ElGamal. Mã nguồn 1 file HTML/CSS/JS. Bạn có thể tải xuống trang này và mở offline.</div>
+
+  <script>
+    // -------------------------- Helpers --------------------------
+    const enc = new TextEncoder();
+    const dec = new TextDecoder();
+
+    const ui = (id)=>document.getElementById(id);
+    const show = (id, obj)=> ui(id).textContent = typeof obj === 'string' ? obj : JSON.stringify(obj, null, 2);
+    const saveJSON = (name, data)=>{
+      const blob = new Blob([JSON.stringify(data,null,2)], {type:'application/json'});
+      const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = name; a.click(); URL.revokeObjectURL(a.href);
+    };
+    const readFileJSON = (file)=> new Promise((res, rej)=>{
+      const r = new FileReader(); r.onload = ()=>{ try{ res(JSON.parse(r.result)); }catch(e){ rej(e); } }; r.onerror=rej; r.readAsText(file);
+    });
+
+    // --------------------- BigInt modulo arithmetic ---------------------
+    const modAdd = (a,b,m)=> (a+b)%m;
+    const modSub = (a,b,m)=> (a>=b? a-b : (a + m - b))%m;
+    const modMul = (a,b,m)=> (a*b)%m; // BigInt handles big multiply
+    const modPow = (a,e,m)=>{
+      a%=m; let r=1n; while(e>0n){ if(e&1n) r=(r*a)%m; a=(a*a)%m; e>>=1n; } return r;
+    };
+    const egcd = (a,b)=>{ // returns [g,x,y] s.t. ax+by=g
+      if(b===0n) return [a,1n,0n];
+      const [g,x1,y1] = egcd(b, a%b);
+      return [g, y1, x1 - (a/b)*y1];
+    };
+    const modInv = (a,m)=>{ const [g,x] = egcd((a%m+m)%m, m); if(g!==1n) return null; return (x%m+m)%m; };
+    const gcd = (a,b)=>{ while(b){ [a,b]=[b, a%b]; } return a; };
+
+    // --------------------- Miller–Rabin (probabilistic) ---------------------
+    function isProbablePrime(n){
+      if(n < 2n) return false;
+      const small=[2n,3n,5n,7n,11n,13n,17n,19n,23n,29n,31n,37n];
+      for(const p of small){ if(n===p) return true; if(n%p===0n) return n===p; }
+      let d=n-1n, s=0n; while((d&1n)===0n){ d>>=1n; s++; }
+      const bases = [2n, 325n, 9375n, 28178n, 450775n, 9780504n, 1795265022n]; // good for 64-bit; for bigger n use more bases
+      const check=(a)=>{
+        if(a%n===0n) return true;
+        let x = modPow(a,d,n);
+        if(x===1n || x===n-1n) return true;
+        for(let r=1n; r<s; r++){
+          x = modMul(x,x,n);
+          if(x===n-1n) return true;
+        }
+        return false;
+      };
+      for(const a of bases){ if(a > n-2n) continue; if(!check(a)) return false; }
+      return true;
+    }
+
+    function randBits(bits){
+      const bytes = Math.ceil(bits/8);
+      const buf = new Uint8Array(bytes);
+      crypto.getRandomValues(buf);
+      buf[0] |= 1<<((bits-1)%8); // set top bit
+      buf[bytes-1] |= 1;         // make odd
+      let x = 0n; for(const b of buf){ x = (x<<8n) + BigInt(b); }
+      return x;
+    }
+
+    async function genPrime(bits){
+      if(bits<40) bits=40; if(bits>256) bits=256;
+      while(true){
+        let p = randBits(bits);
+        if(isProbablePrime(p)) return p;
+      }
+    }
+
+    // Pollard Rho (lite) to factor p-1 for primitive root
+    function pollardRho(n){
+      if(n%2n===0n) return 2n;
+      const f=(x,c)=>( (x*x + c) % n );
+      while(true){
+        let x = 2n + (BigInt(crypto.getRandomValues(new Uint32Array(1))[0]) % (n-3n));
+        let y = x; let c = 1n + (BigInt(crypto.getRandomValues(new Uint32Array(1))[0]) % (n-1n));
+        let d = 1n;
+        while(d===1n){ x=f(x,c); y=f(f(y,c),c); d = gcd(x>y?x-y:y-x, n); }
+        if(d!==n) return d;
+      }
+    }
+    function factor(n, out){
+      if(n===1n) return; if(isProbablePrime(n)){ out.push(n); return; }
+      const d = pollardRho(n); factor(d,out); factor(n/d,out);
+    }
+
+    function primitiveRoot(p){
+      const fac=[]; factor(p-1n, fac); // prime factors of p-1
+      const uniq=[...new Set(fac.map(String))].map(BigInt);
+      while(true){
+        const g = 2n + BigInt(crypto.getRandomValues(new Uint32Array(1))[0] % 100000) % (p-3n);
+        let ok=true; for(const q of uniq){ if(modPow(g,(p-1n)/q,p)===1n){ ok=false; break; } }
+        if(ok) return g;
+      }
+    }
+
+    // --------------------- SHA-256 -> integer mod (p-1) ---------------------
+    async function hashToMod(msg, mod){
+      const buf = await crypto.subtle.digest('SHA-256', enc.encode(msg));
+      const bytes = new Uint8Array(buf);
+      let h=0n; for(const b of bytes){ h = (h<<8n) + BigInt(b); }
+      return mod===0n? h : h % mod;
+    }
+
+    // --------------------- ElGamal: KeyGen, Sign, Verify ---------------------
+    let PUB = null; // {p,g,y}
+    let PRIV = null; // {p,g,x}
+    let LAST_SIG = null; // {r,s}
+
+    async function keygen(bits){
+      const p = await genPrime(bits);
+      const g = primitiveRoot(p);
+      // secret x in [2, p-2]
+      const x = 2n + (BigInt(crypto.getRandomValues(new Uint32Array(1))[0]) % (p-3n));
+      const y = modPow(g, x, p);
+      PUB = {p:String(p), g:String(g), y:String(y)};
+      PRIV= {p:String(p), g:String(g), x:String(x)};
+      renderKeys();
+    }
+
+    async function sign(message){
+      if(!PRIV) throw new Error('Chưa có khóa bí mật');
+      const p = BigInt(PRIV.p), g = BigInt(PRIV.g), x = BigInt(PRIV.x);
+      const m = await hashToMod(message, p-1n);
+      let k, invk;
+      do{
+        k = 2n + (BigInt(crypto.getRandomValues(new Uint32Array(1))[0]) % (p-3n));
+      }while(gcd(k, p-1n) !== 1n);
+      invk = modInv(k, p-1n);
+      const r = modPow(g, k, p);
+      const t = (m - (x * r) % (p-1n) + (p-1n)) % (p-1n);
+      const s = (invk * t) % (p-1n);
+      LAST_SIG = {r:String(r), s:String(s)};
+      show('sigView', LAST_SIG);
+      return LAST_SIG;
+    }
+
+    async function verify(message, sig){
+      if(!PUB) throw new Error('Chưa có khóa công khai');
+      const p = BigInt(PUB.p), g = BigInt(PUB.g), y = BigInt(PUB.y);
+      const r = BigInt(sig.r), s = BigInt(sig.s);
+      if(r===0n || r>=p) return false;
+      const m = await hashToMod(message, p-1n);
+      const left  = modPow(g, m, p);
+      const right = (modPow(y, r, p) * modPow(r, s, p)) % p;
+      return left === right;
+    }
+
+    function renderKeys(){
+      show('pubView', PUB? PUB : '—');
+      show('privView', PRIV? PRIV : '—');
+    }
+
+    // --------------------- UI bindings ---------------------
+    ui('btnGen').onclick = async ()=>{
+      ui('pubView').textContent = 'Đang sinh khóa...';
+      const bits = parseInt(ui('bits').value||'96',10);
+      await keygen(bits);
+    };
+
+    ui('btnExport').onclick = ()=>{
+      if(PUB) saveJSON('public_key.json', PUB);
+      if(PRIV) saveJSON('private_key.json', PRIV);
+    };
+
+    ui('btnImportPub').onclick = ()=> ui('filePub').click();
+    ui('btnImportPriv').onclick = ()=> ui('filePriv').click();
+
+    ui('filePub').addEventListener('change', async (e)=>{
+      const f = e.target.files[0]; if(!f) return;
+      try{ const j = await readFileJSON(f); PUB=j; renderKeys(); }
+      catch(err){ alert('Tệp khóa công khai không hợp lệ'); }
+      e.target.value='';
+    });
+    ui('filePriv').addEventListener('change', async (e)=>{
+      const f = e.target.files[0]; if(!f) return;
+      try{ const j = await readFileJSON(f); PRIV=j; renderKeys(); }
+      catch(err){ alert('Tệp khóa bí mật không hợp lệ'); }
+      e.target.value='';
+    });
+
+    ui('btnClear').onclick = ()=>{ PUB=null; PRIV=null; LAST_SIG=null; renderKeys(); show('sigView','—'); ui('verResult').textContent='—'; };
+
+    ui('btnSign').onclick = async ()=>{
+      try{
+        const msg = ui('signMsg').value || '';
+        if(!msg.trim()) return alert('Nhập nội dung cần ký');
+        await sign(msg);
+      }catch(err){ alert(err.message||String(err)); }
+    };
+
+    ui('btnSaveSig').onclick = ()=>{ if(LAST_SIG) saveJSON('signature.json', LAST_SIG); else alert('Chưa có chữ ký'); };
+
+    ui('btnLoadSig').onclick = ()=> ui('fileSig').click();
+    ui('fileSig').addEventListener('change', async (e)=>{
+      const f = e.target.files[0]; if(!f) return;
+      try{ const j = await readFileJSON(f); ui('verR').value = j.r; ui('verS').value = j.s; }
+      catch(err){ alert('Tệp chữ ký không hợp lệ'); }
+      e.target.value='';
+    });
+
+    ui('btnVerify').onclick = async ()=>{
+      try{
+        const msg = ui('verMsg').value||'';
+        const r = ui('verR').value.trim();
+        const s = ui('verS').value.trim();
+        if(!PUB) return alert('Chưa có khóa công khai');
+        if(!msg.trim()) return alert('Nhập nội dung');
+        if(!r || !s) return alert('Nhập r và s');
+        const ok = await verify(msg, {r, s});
+        ui('verResult').innerHTML = ok ? `<b class="ok">HỢP LỆ ✔</b>` : `<b class="bad">KHÔNG HỢP LỆ ✖</b>`;
+      }catch(err){ alert(err.message||String(err)); }
+    };
+
+    // Initial render
+    renderKeys();
+  </script>
+</body>
+</html>

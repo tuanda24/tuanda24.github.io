@@ -1,0 +1,215 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(109.6deg, rgb(9, 9, 121) 11.2%, rgb(144, 6, 161) 53.7%, rgb(0, 212, 255) 100.2%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.container .box {
+  width: fit-content;
+  height: auto;
+  background-color: #fff;
+  opacity: 1;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+}
+.container .box .create-key {
+  margin: 10px 15px;
+}
+.container .box .create-key fieldset {
+  width: 100%;
+  border-radius: 10px;
+}
+.container .box .create-key .text {
+  text-align: center;
+  margin-top: 3px;
+}
+.container .box .create-key .content {
+  display: flex;
+  margin-top: 5px;
+  align-items: center;
+  justify-content: center;
+}
+.container .box .create-key .content .text-item {
+  width: 40%;
+  margin-left: 20px;
+}
+.container .box .create-key .content .input-var input {
+  outline: none;
+  padding: 1px;
+}
+.container .box .create-key .button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 7px 0px;
+}
+.container .box .create-key .button .btn-options {
+  margin-left: 10px;
+}
+.container .box .create-key .button .btn-options input {
+  width: 140px;
+  height: 25px;
+}
+.container .box .signature {
+  display: flex;
+}
+.container .box .signature .confirm-key {
+  margin: 10px 10px;
+  display: flex;
+  width: 50%;
+  flex-direction: column;
+}
+.container .box .signature .confirm-key fieldset {
+  border-radius: 10px;
+  width: 100%;
+}
+.container .box .signature .confirm-key .content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 5px;
+}
+.container .box .signature .confirm-key .content .text-content {
+  width: 30%;
+}
+.container .box .signature .confirm-key .content .input-var input {
+  outline: none;
+  padding: 3px;
+}
+.container .box .signature .confirm-key .text {
+  text-align: center;
+  margin-top: 3px;
+  display: flex;
+  flex-direction: column;
+}
+.container .box .signature .confirm-key .text .text-head {
+  margin-top: 5px;
+}
+.container .box .signature .confirm-key .text .file-preview {
+  width: 100%;
+}
+.container .box .signature .confirm-key .text .file-preview textarea {
+  resize: none;
+  padding: 5px;
+  width: 90%;
+}
+.container .box .signature .confirm-key .text .input-file {
+  text-align: left;
+  margin-top: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.container .box .signature .confirm-key .text .input-file #inputFile {
+  width: 60%;
+}
+.container .box .signature .confirm-key .text .input-file #showPreview {
+  height: 22px;
+  padding: 1px 6px;
+}
+.container .box .signature .confirm-key .input-content {
+  text-align: center;
+  margin-top: 3px;
+  display: flex;
+  flex-direction: column;
+}
+.container .box .signature .confirm-key .input-content .input-message textarea {
+  resize: none;
+  padding: 5px;
+  width: 86%;
+  outline: none;
+  height: 50px;
+}
+.container .box .signature .confirm-key .input-content .input-btn {
+  margin-top: 5px;
+}
+.container .box .signature .confirm-key .input-content .input-btn button {
+  height: 25px;
+  width: 90px;
+  margin-left: 5px;
+  margin-bottom: 5px;
+}
+.container .box .signature .check {
+  margin: 10px 10px;
+  display: flex;
+  width: 50%;
+  flex-direction: column;
+}
+.container .box .signature .check fieldset {
+  border-radius: 10px;
+  width: 100%;
+}
+.container .box .signature .check .content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 5px;
+}
+.container .box .signature .check .content .text-content {
+  width: 30%;
+}
+.container .box .signature .check .content .input-var input {
+  outline: none;
+  padding: 3px;
+}
+.container .box .signature .check .text {
+  text-align: center;
+  margin-top: 3px;
+  display: flex;
+  flex-direction: column;
+}
+.container .box .signature .check .text .text-head {
+  margin-top: 5px;
+}
+.container .box .signature .check .text .file-preview {
+  width: 100%;
+}
+.container .box .signature .check .text .file-preview textarea {
+  resize: none;
+  padding: 5px;
+  width: 90%;
+}
+.container .box .signature .check .text .input-file {
+  text-align: left;
+  margin-top: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.container .box .signature .check .text .input-file #selected-file {
+  width: 60%;
+}
+.container .box .signature .check .text .input-file #showPreview-after {
+  height: 22px;
+  padding: 1px 6px;
+}
+.container .box .signature .check .input-content {
+  text-align: center;
+  margin-top: 3px;
+  display: flex;
+  flex-direction: column;
+}
+.container .box .signature .check .input-content .input-message textarea {
+  resize: none;
+  padding: 5px;
+  width: 86%;
+  outline: none;
+  height: 50px;
+}
+.container .box .signature .check .input-content .input-btn {
+  margin-top: 5px;
+}
+.container .box .signature .check .input-content .input-btn button {
+  height: 25px;
+  width: 90px;
+  margin-left: 5px;
+  margin-bottom: 5px;
+}/*# sourceMappingURL=style.css.map */
