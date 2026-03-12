@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+
+<html class="light" lang="vi">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Sản Phẩm Tinh Hoa - Xuân Nguyên Tea</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700&amp;family=Noto+Sans+JP:wght@400;700&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1A472A", // Dark Green
+                        "accent": "#D4AF37", // Gold
+                        "background-light": "#F9F6F0", // Soft Off-white
+                        "background-dark": "#121212",
+                    },
+                    fontFamily: {
+                        "display": ["Public Sans", "sans-serif"],
+                        "serif": ["Noto Sans JP", "serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        .font-elephant {
+            font-family: 'Elephant', 'Garamond', serif;
+            letter-spacing: 0.05em;
+        }
+    </style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 antialiased">
+    <div class="relative flex min-h-screen flex-col">
+        <!-- Header -->
+        <header
+            class="sticky-nav bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md border-b border-primary/10 dark:border-white/10">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between items-center py-4">
+                    <div class="flex items-center gap-2">
+                        <span class="material-symbols-outlined text-primary dark:text-accent text-3xl">eco</span>
+                        <h1 class="text-2xl font-logo font-bold text-primary dark:text-accent tracking-tight">Xuân
+                            Nguyên
+                        </h1>
+                    </div>
+                    <nav class="hidden md:flex space-x-8 items-center">
+                        <a class="text-sm font-medium hover:text-accent transition-colors" href="index.html">Trang
+                            chủ</a>
+                        <a class="text-sm font-medium hover:text-accent transition-colors" href="product.html">Sản
+                            phẩm</a>
+                        <a class="text-sm font-bold text-accent border-b-2 border-accent" href="about.html">Câu
+                            chuyện</a>
+                        <a class="text-sm font-medium hover:text-accent transition-colors" href="contact.html">Liên
+                            hệ</a>
+                    </nav>
+                    <div class="flex items-center gap-4">
+                        <button class="p-2 rounded-full hover:bg-primary/10 transition-colors">
+                            <span class="material-symbols-outlined text-primary dark:text-accent">shopping_bag</span>
+                        </button>
+                        <button class="p-2 rounded-full hover:bg-primary/10 transition-colors">
+                            <span class="material-symbols-outlined text-primary dark:text-accent">person</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <main class="flex-grow">
+            <!-- Hero Banner -->
+            <section class="relative h-64 w-full overflow-hidden">
+                <div class="absolute inset-0 bg-primary/40 mix-blend-multiply"></div>
+                <div class="absolute inset-0 bg-cover bg-center"
+                    data-alt="Serene tea leaf plantation landscape background"
+                    style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDoOhExYVYw2tL8ov1tQo5CZbVjMRbC_mPUXiNTiH_SIFxLoUwNWQ1iEFv6qrArCXdzez4eBDtsk0jjGT68RH5nQg_MpwDRmy2dtex52ZMFmIAcndrGfE2Rh6S9i4iQ3QSOm3FiVnxLp6qLbg7DYcMHIbelxPxacMt-EaW0YV7QwCciyQSS7KPW0OZiAVObzs-05DHtdRmTlQKh6dldGGn9sRuu7-xAxeJtZBllCykkipmuezeeh95wOQ1ZzXATUgshSaewn4v4Hkg');">
+                </div>
+                <div class="relative mx-auto flex h-full max-w-7xl flex-col justify-center px-4 sm:px-6 lg:px-8">
+                    <h2 class="text-4xl font-bold text-white md:text-5xl">Sản Phẩm Tinh Hoa</h2>
+                    <p class="mt-2 text-lg text-slate-100 max-w-lg">Gói trọn hương vị đất trời trong từng tách trà
+                        thượng hạng từ những vùng nguyên liệu trứ danh.</p>
+                </div>
+            </section>
+            <!-- Category Filter -->
+            <section
+                class="sticky top-[73px] z-40 bg-background-light/95 border-b border-primary/5 py-4 dark:bg-background-dark/95">
+                <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                    <div class="flex items-center gap-2 overflow-x-auto pb-1 no-scrollbar">
+                        <button
+                            class="whitespace-nowrap rounded-full bg-primary px-6 py-2 text-sm font-semibold text-white">Tất
+                            cả</button>
+                        <button
+                            class="whitespace-nowrap rounded-full bg-white px-6 py-2 text-sm font-medium text-slate-600 border border-slate-200 hover:border-primary hover:text-primary transition-all dark:bg-slate-800 dark:border-slate-700 dark:text-slate-300">Shan
+                            Tuyết</button>
+                        <button
+                            class="whitespace-nowrap rounded-full bg-white px-6 py-2 text-sm font-medium text-slate-600 border border-slate-200 hover:border-primary hover:text-primary transition-all dark:bg-slate-800 dark:border-slate-700 dark:text-slate-300">Trà
+                            Oolong</button>
+                        <button
+                            class="whitespace-nowrap rounded-full bg-white px-6 py-2 text-sm font-medium text-slate-600 border border-slate-200 hover:border-primary hover:text-primary transition-all dark:bg-slate-800 dark:border-slate-700 dark:text-slate-300">Trà
+                            Mạn</button>
+                        <button
+                            class="whitespace-nowrap rounded-full bg-white px-6 py-2 text-sm font-medium text-slate-600 border border-slate-200 hover:border-primary hover:text-primary transition-all dark:bg-slate-800 dark:border-slate-700 dark:text-slate-300">Quà
+                            Tặng</button>
+                    </div>
+                </div>
+            </section>
+            <!-- Product Grid -->
+            <section class="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
+                    <!-- Product Card 1 -->
+                    <div
+                        class="group relative flex flex-col bg-white dark:bg-slate-900 rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all border border-slate-100 dark:border-white/5">
+                        <div class="aspect-square overflow-hidden bg-slate-100">
+                            <img alt="Trà Shan Tuyết"
+                                class="h-full w-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                data-alt="Premium Shan Tuyet tea leaves in a wooden bowl"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDHyoMi7DxxPWo6VaMuJ1zksF4fcQx1RgACxWq8no-rTWoh_Mq9-02arjue0DbMJEL1s2lutkUR4DUZ4ly4753Rv9TKmh4kIUssF01BXPFfjtqR1fow6MZafDDlX6eIwcThaN4-MkJG_Ctrii79bKnj-43KzdX_bBD5FAwgQdJXdPEsbNUam4U5o0k9O5smpHtNdU-W5ihOXo-_ES35d3W8seCe10p-PQxNzDSqN67-UxjFaY1P2l2QiAAeWuLF8_icmH6wVLpVIT0" />
+                        </div>
+                        <div class="flex flex-1 flex-col p-4">
+                            <span class="text-[10px] uppercase tracking-widest text-accent font-bold mb-1">Cổ Thụ Hà
+                                Giang</span>
+                            <h3 class="text-base font-bold text-primary dark:text-white line-clamp-1">Trà Shan Tuyết Cổ
+                                Thụ</h3>
+                            <p class="mt-2 text-lg font-bold text-slate-900 dark:text-accent">1.200.000đ</p>
+                            <button
+                                class="mt-4 flex w-full items-center justify-center gap-2 rounded-lg bg-accent py-2.5 text-sm font-bold text-primary hover:bg-opacity-90 transition-colors">
+                                <span class="material-symbols-outlined text-sm">shopping_bag</span>
+                                Thêm vào giỏ
+                            </button>
+                        </div>
+                    </div>
+                    <!-- Product Card 2 -->
+                    <div
+                        class="group relative flex flex-col bg-white dark:bg-slate-900 rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all border border-slate-100 dark:border-white/5">
+                        <div class="aspect-square overflow-hidden bg-slate-100">
+                            <img alt="Trà Oolong"
+                                class="h-full w-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                data-alt="High mountain Oolong tea loose leaves"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCKpGYdHm6J4ZN8JwbyoS29UQAiSKKTDAzGlN7t9gnG4HhSxi7oHyi_9C9ZDz1yHuFbtBehfB48xSHML9Mfg5rmtI2SgxZ4lpZyx5fUUgn_oEKWddN6RZ-HwyA-6pTrL1BC61jsZ6nuZ_lxssBLH7L_QKIme9E19TQrNLeRGt59nicsB7DAOtEj82sqfee7lYArbQMpUOg25k6Iq07zC5_K9FEqx5iJI82w4FP-n862elGFsDvJ3j-HCVcDyWttMUSm2uMu_kzSmsU" />
+                        </div>
+                        <div class="flex flex-1 flex-col p-4">
+                            <span class="text-[10px] uppercase tracking-widest text-accent font-bold mb-1">Đặc Sản Lâm
+                                Đồng</span>
+                            <h3 class="text-base font-bold text-primary dark:text-white line-clamp-1">Trà Oolong Đặc Sản
+                            </h3>
+                            <p class="mt-2 text-lg font-bold text-slate-900 dark:text-accent">850.000đ</p>
+                            <button
+                                class="mt-4 flex w-full items-center justify-center gap-2 rounded-lg bg-accent py-2.5 text-sm font-bold text-primary hover:bg-opacity-90 transition-colors">
+                                <span class="material-symbols-outlined text-sm">shopping_bag</span>
+                                Thêm vào giỏ
+                            </button>
+                        </div>
+                    </div>
+                    <!-- Product Card 3 -->
+                    <div
+                        class="group relative flex flex-col bg-white dark:bg-slate-900 rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all border border-slate-100 dark:border-white/5">
+                        <div class="aspect-square overflow-hidden bg-slate-100">
+                            <img alt="Trà Mạn"
+                                class="h-full w-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                data-alt="Traditional green tea in ceramic cup"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCwzUXUNS75e7IGz_jhmCveuHyYXCWzdNpy-qjnYcB-PzdNvu6aX7t5fZ-H50rMTbl4AsZgsa9z94-lQ0toeRVnlqaSFfXtRc-G_Zj41oECyppv0PfqnKl9qVXCa-_UBBUEQ3zw24AeRnLiv0-wx-ZLroqVaYSIFNXARIPHey9j_eTSn-C7gYqgygPTTutlCkUa_BIe7yFNJNxSjs65yKbY5ToYV2-1GcbZSBnxH7M6zwoIjzUfixu24PPALBd3w_QwZkH3eGPUOcw" />
+                        </div>
+                        <div class="flex flex-1 flex-col p-4">
+                            <span class="text-[10px] uppercase tracking-widest text-accent font-bold mb-1">Hứng Khởi
+                                Buổi Sáng</span>
+                            <h3 class="text-base font-bold text-primary dark:text-white line-clamp-1">Trà Mạn Hứng Khởi
+                            </h3>
+                            <p class="mt-2 text-lg font-bold text-slate-900 dark:text-accent">450.000đ</p>
+                            <button
+                                class="mt-4 flex w-full items-center justify-center gap-2 rounded-lg bg-accent py-2.5 text-sm font-bold text-primary hover:bg-opacity-90 transition-colors">
+                                <span class="material-symbols-outlined text-sm">shopping_bag</span>
+                                Thêm vào giỏ
+                            </button>
+                        </div>
+                    </div>
+                    <!-- Product Card 4 -->
+                    <div
+                        class="group relative flex flex-col bg-white dark:bg-slate-900 rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all border border-slate-100 dark:border-white/5">
+                        <div class="aspect-square overflow-hidden bg-slate-100">
+                            <img alt="Trà Lài"
+                                class="h-full w-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                data-alt="Premium Jasmine tea with white flowers"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCHKpphQpyDMXm2ZL9wXRWZJS9bCidjjWL0cyjXYUzh-RB5U_NnngUEECCSGE3goDFs-GfzoGiGd5EJhMGsaUt1qGdN_7jGQLprUOPF53ik9C5MM0HwIML86U2Sh1SHHTc5JDTFVcLkfe2ShSOEyl5QNLa8OPlVur2la5wl-iUUyDs2INs_-GTpIpN0p3zC6ChmKCm85c6in06dc91fAQxbqsVNPkkg5zoz2wIxXYeI_kiyPh2-ZqC7g2SeCRtL0Gz22WwHxuNcvZE" />
+                        </div>
+                        <div class="flex flex-1 flex-col p-4">
+                            <span class="text-[10px] uppercase tracking-widest text-accent font-bold mb-1">Thượng
+                                Hạng</span>
+                            <h3 class="text-base font-bold text-primary dark:text-white line-clamp-1">Trà Lài Thượng
+                                Hạng</h3>
+                            <p class="mt-2 text-lg font-bold text-slate-900 dark:text-accent">350.000đ</p>
+                            <button
+                                class="mt-4 flex w-full items-center justify-center gap-2 rounded-lg bg-accent py-2.5 text-sm font-bold text-primary hover:bg-opacity-90 transition-colors">
+                                <span class="material-symbols-outlined text-sm">shopping_bag</span>
+                                Thêm vào giỏ
+                            </button>
+                        </div>
+                    </div>
+                    <!-- Additional Rows ... -->
+                    <div
+                        class="group relative flex flex-col bg-white dark:bg-slate-900 rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all border border-slate-100 dark:border-white/5">
+                        <div class="aspect-square overflow-hidden bg-slate-100">
+                            <img alt="Bộ Quà Tặng"
+                                class="h-full w-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                data-alt="Luxury tea gift box set with tea cups"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCq2k8hE3rxv6BYlofDGfqH6VLiwby3WfHTgMVFx_vS6vxtqndM5FlJvZKItwg1xVyTevZFTd1wBejhKRw636Or52XmKmF-pXTmlSucZG3QwLI-N85mGGA8kkVmuYiVaHRK86Wa-xpu46kZRHrpfpN53Dv9FMu39bzlY4_nt969fp1aEZvik5YZ-ib5mefo-771Bo9_TSyNE1Jl8jAowaFRM7cl-TF-svZTETRyFUYtxYLu7xRF222O9Z__fIMZvvMwqfYhdXLayKY" />
+                        </div>
+                        <div class="flex flex-1 flex-col p-4">
+                            <span class="text-[10px] uppercase tracking-widest text-accent font-bold mb-1">Phú Quý Bình
+                                An</span>
+                            <h3 class="text-base font-bold text-primary dark:text-white line-clamp-1">Bộ Quà Tặng Phú
+                                Quý</h3>
+                            <p class="mt-2 text-lg font-bold text-slate-900 dark:text-accent">2.500.000đ</p>
+                            <button
+                                class="mt-4 flex w-full items-center justify-center gap-2 rounded-lg bg-accent py-2.5 text-sm font-bold text-primary hover:bg-opacity-90 transition-colors">
+                                <span class="material-symbols-outlined text-sm">shopping_bag</span>
+                                Thêm vào giỏ
+                            </button>
+                        </div>
+                    </div>
+                    <div
+                        class="group relative flex flex-col bg-white dark:bg-slate-900 rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all border border-slate-100 dark:border-white/5">
+                        <div class="aspect-square overflow-hidden bg-slate-100">
+                            <img alt="Trà Tuyết San"
+                                class="h-full w-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                data-alt="High mountain tea plantation during sunset"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAIBIXF5LnYO-EqzpIpmYskf5q9DJupaVetzLG3_g4Z1vYW7e2q17L1_7kly1tXc7tJU4GYPKHvUjIl1iyMUdZA9vVVd6KUfekGVnC99exeNnsETlbhFf0pojFVAI5b5slBqW1uaKlGSxTyORVtD7yQYrS54gdq73r2o6GQ6rGVebM_srdvrDY_WFY9UtYOfrwoRMjZYVxOwoh4JUVGMxSiKr8G5ghCz9kLfoQY3xWYEwPi_-jNhcW_NXIsf235TMCEkGEdM6siRb4" />
+                        </div>
+                        <div class="flex flex-1 flex-col p-4">
+                            <span class="text-[10px] uppercase tracking-widest text-accent font-bold mb-1">Hà Giang
+                                Tuyệt Đỉnh</span>
+                            <h3 class="text-base font-bold text-primary dark:text-white line-clamp-1">Trà Tuyết San Hà
+                                Giang</h3>
+                            <p class="mt-2 text-lg font-bold text-slate-900 dark:text-accent">1.100.000đ</p>
+                            <button
+                                class="mt-4 flex w-full items-center justify-center gap-2 rounded-lg bg-accent py-2.5 text-sm font-bold text-primary hover:bg-opacity-90 transition-colors">
+                                <span class="material-symbols-outlined text-sm">shopping_bag</span>
+                                Thêm vào giỏ
+                            </button>
+                        </div>
+                    </div>
+                    <div
+                        class="group relative flex flex-col bg-white dark:bg-slate-900 rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all border border-slate-100 dark:border-white/5">
+                        <div class="aspect-square overflow-hidden bg-slate-100">
+                            <img alt="Trà Oolong Kim Tuyên"
+                                class="h-full w-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                data-alt="Oolong tea leaf balls in glass container"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCD2r2pZ2HKQCjx5NIKIZ8PktDqdQa4QvPbj750PzljYG8zOkTtX6zlgmM2Q-bhzEWxsp7KPwWLJA8ZasHWKrOUPhphLgDvTjmaB0X5c4wMvO6X-3etsxzt53FZhZxE1kTiPRVuUrogslg_O-phcbQMcQsQK7illdYyoP79XZaQmwdYS9_-KjZOGfTKo7oMIPMAWCusLpKQYgbGNy4J1t2kvjFAyo3DXrGm4WivTq92DVGCxvw_JTxL6eVqZQXm_ELwgKAhYZHYHW0" />
+                        </div>
+                        <div class="flex flex-1 flex-col p-4">
+                            <span class="text-[10px] uppercase tracking-widest text-accent font-bold mb-1">Kim Tuyên
+                                Thượng Hạng</span>
+                            <h3 class="text-base font-bold text-primary dark:text-white line-clamp-1">Trà Oolong Kim
+                                Tuyên</h3>
+                            <p class="mt-2 text-lg font-bold text-slate-900 dark:text-accent">900.000đ</p>
+                            <button
+                                class="mt-4 flex w-full items-center justify-center gap-2 rounded-lg bg-accent py-2.5 text-sm font-bold text-primary hover:bg-opacity-90 transition-colors">
+                                <span class="material-symbols-outlined text-sm">shopping_bag</span>
+                                Thêm vào giỏ
+                            </button>
+                        </div>
+                    </div>
+                    <div
+                        class="group relative flex flex-col bg-white dark:bg-slate-900 rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all border border-slate-100 dark:border-white/5">
+                        <div class="aspect-square overflow-hidden bg-slate-100">
+                            <img alt="Trà Mạn Truyền Thống"
+                                class="h-full w-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                data-alt="Traditional Vietnamese tea service set"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDESiyL_JDNpOKeeVng5NMa8kTw5Iy-ZhdCyvwlNKHKmA5Vb22gFq0rU_odOPmtNjc1ygC0FzZ3A1oNFvrph4zwSIL0FQRDlW6EGPldzEMvnriUWHw3Xg3GlUnwkj9Rv5jjmZME-MDBr210_cOvcgpMaXAtsGLPpTONOTQzUq493Lq4BaZA1Qv8DZIW8XwPXJ1DAe3bKsl3nbMHGuAjac41TdksDjGtspXgy38BrKjpw9fSj3zS6WG_sbj1iUOhgOXtDBDnK5zzAiU" />
+                        </div>
+                        <div class="flex flex-1 flex-col p-4">
+                            <span class="text-[10px] uppercase tracking-widest text-accent font-bold mb-1">Gia
+                                Truyền</span>
+                            <h3 class="text-base font-bold text-primary dark:text-white line-clamp-1">Trà Mạn Truyền
+                                Thống</h3>
+                            <p class="mt-2 text-lg font-bold text-slate-900 dark:text-accent">400.000đ</p>
+                            <button
+                                class="mt-4 flex w-full items-center justify-center gap-2 rounded-lg bg-accent py-2.5 text-sm font-bold text-primary hover:bg-opacity-90 transition-colors">
+                                <span class="material-symbols-outlined text-sm">shopping_bag</span>
+                                Thêm vào giỏ
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Featured Section (Special Edition) -->
+            <section class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+                <div class="relative overflow-hidden rounded-3xl bg-primary text-white">
+                    <div class="grid grid-cols-1 md:grid-cols-2">
+                        <div class="p-8 md:p-16 flex flex-col justify-center">
+                            <span
+                                class="inline-block px-3 py-1 bg-accent/20 text-accent text-xs font-bold rounded-full mb-6 w-fit uppercase tracking-widest border border-accent/30">Phiên
+                                Bản Giới Hạn</span>
+                            <h2 class="text-3xl font-bold md:text-4xl mb-6">Tuyệt Phẩm Trà Xuân: Phiên Bản Đặc Biệt</h2>
+                            <p class="text-slate-200 text-lg mb-8 leading-relaxed">
+                                Sự kết hợp tinh túy từ những búp trà cổ thụ nghìn năm tuổi, thu hoạch vào tiết thanh
+                                minh duy nhất một lần trong năm. Gói trọn hương vị đất trời trong hộp quà sơn mài sang
+                                trọng được chế tác thủ công.
+                            </p>
+                            <div class="flex flex-wrap gap-4">
+                                <button
+                                    class="rounded-xl bg-accent px-8 py-4 text-primary font-bold hover:bg-opacity-90 transition-all flex items-center gap-2">
+                                    <span class="material-symbols-outlined">visibility</span>
+                                    Khám phá ngay
+                                </button>
+                                <button
+                                    class="rounded-xl border border-white/30 bg-white/10 px-8 py-4 text-white font-bold backdrop-blur-sm hover:bg-white/20 transition-all">
+                                    Tìm hiểu thêm
+                                </button>
+                            </div>
+                        </div>
+                        <div class="relative h-96 md:h-auto">
+                            <img alt="Special Edition Box" class="h-full w-full object-cover"
+                                data-alt="Exquisite dark lacquer gift box with golden tea canisters"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAY_5ddwULkfFfg8kSdpBUfXV-Ym2DJW4NEbhkt3MFv7ICUeguzKnLuHPrgjCQnJbR6NNbr2HdOWH5VyLzWv6qAtY1_yrqbLVObZxvMxzq6JSpGJgotT2yexQ88gfzS_JZ9XNqEUpN92OsTk0HWYeyADVB2vWlMBwDdm0DGXmZAsUZCUgLxb9KB4PWhEi5Z9awWqDz8DwgjfgFlcChPnXTN5Tz6Asj0FmgCcysYb08DVVVuQMZ32TSiRRgpdWgPRRxKMxWDV3Wv9qs" />
+                            <div class="absolute inset-0 bg-gradient-to-r from-primary to-transparent md:block hidden">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <!-- Footer -->
+        <footer class="bg-[#0e2717] text-gray-300 py-16 border-t border-accent/20" id="contact">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+                    <!-- Logo and About -->
+                    <div class="col-span-1 md:col-span-1">
+                        <a class="text-accent text-3xl font-elephant font-bold block mb-6" href="#">Xuân Nguyên</a>
+                        <p class="text-sm leading-relaxed opacity-70">
+                            Trà từ những cây cổ thụ hàng trăm năm tuổi vùng Tây Bắc Việt Nam. Mang tinh hoa đất trời vào
+                            từng tách trà.
+                        </p>
+                    </div>
+                    <!-- Links -->
+                    <div>
+                        <h4 class="text-white font-semibold uppercase tracking-widest mb-6 text-sm">Khám Phá</h4>
+                        <ul class="space-y-4 text-sm">
+                            <li><a class="hover:text-accent" href="#">Sản phẩm mới</a></li>
+                            <li><a class="hover:text-accent" href="#">Bộ quà tặng</a></li>
+                            <li><a class="hover:text-accent" href="#">Chính sách đại lý</a></li>
+                            <li><a class="hover:text-accent" href="#">Hướng dẫn mua hàng</a></li>
+                        </ul>
+                    </div>
+                    <!-- Contact Info -->
+                    <div>
+                        <h4 class="text-white font-semibold uppercase tracking-widest mb-6 text-sm">Liên Hệ</h4>
+                        <ul class="space-y-4 text-sm">
+                            <li class="flex items-start gap-3">
+                                <svg class="h-5 w-5 text-accent" fill="none" stroke="currentColor" viewbox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z">
+                                    </path>
+                                    <path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                </svg>
+                                <span>Vùng nguyên liệu: Suối Giàng, Văn Chấn, Yên Bái</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <svg class="h-5 w-5 text-accent" fill="none" stroke="currentColor" viewbox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 004.516 4.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z">
+                                    </path>
+                                </svg>
+                                <span>+84 (0) 900 123 456</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <svg class="h-5 w-5 text-accent" fill="none" stroke="currentColor" viewbox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+                                    </path>
+                                </svg>
+                                <span>contact@xuannguyen.vn</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- Newsletter -->
+                    <div>
+                        <h4 class="text-white font-semibold uppercase tracking-widest mb-6 text-sm">Nhận Tin</h4>
+                        <p class="text-xs mb-4 opacity-70">Nhận thông tin về các mùa trà mới nhất và ưu đãi đặc quyền.
+                        </p>
+                        <form class="flex">
+                            <input
+                                class="bg-white/5 border-white/20 text-sm focus:ring-accent focus:border-accent w-full p-2.5"
+                                placeholder="Email của bạn" type="email" />
+                            <button class="bg-accent text-primary p-2.5 hover:bg-yellow-600 transition-colors"
+                                type="submit">
+                                <svg class="h-5 w-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M14 5l7 7m0 0l-7 7m7-7H3" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-width="2"></path>
+                                </svg>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                <div
+                    class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center text-xs opacity-50 space-y-4 md:space-y-0">
+                    <p>© 2023 Xuân Nguyên Tea. All rights reserved.</p>
+                    <div class="flex space-x-6">
+                        <a class="hover:text-accent" href="#">Facebook</a>
+                        <a class="hover:text-accent" href="#">Instagram</a>
+                        <a class="hover:text-accent" href="#">Youtube</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>

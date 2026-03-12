@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+
+<html class="light" lang="vi">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700&amp;family=Playfair+Display:wght@700&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#D4AF37", // Gold
+                        "brand-green": "#1A472A", // Dark Green
+                        "background-light": "#F9F6F0", // Off-white
+                        "background-dark": "#121212",
+                    },
+                    fontFamily: {
+                        "display": ["Public Sans", "sans-serif"],
+                        "serif": ["Playfair Display",
+                            "serif"
+                        ] // Using Playfair as a high-end alternative for 'Elephant' vibe
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        .font-brand {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .bg-brand-green-dark {
+            background-color: #1A472A;
+        }
+
+        .text-gold {
+            color: #D4AF37;
+        }
+
+        .border-gold {
+            border-color: #D4AF37;
+        }
+
+        .font-elephant {
+            font-family: 'Elephant', 'Garamond', serif;
+            letter-spacing: 0.05em;
+        }
+    </style>
+</head>
+
+<body
+    class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 transition-colors duration-300">
+    <!-- Sticky Header -->
+    <header
+        class="sticky-nav bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md border-b border-primary/10 dark:border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center gap-2">
+                    <span class="material-symbols-outlined text-primary dark:text-accent text-3xl">eco</span>
+                    <h1 class="text-2xl font-logo font-bold text-primary dark:text-accent tracking-tight">Xuân Nguyên
+                    </h1>
+                </div>
+                <nav class="hidden md:flex space-x-8 items-center">
+                    <a class="text-sm font-medium hover:text-accent transition-colors" href="index.html">Trang chủ</a>
+                    <a class="text-sm font-medium hover:text-accent transition-colors" href="product.html">Sản phẩm</a>
+                    <a class="text-sm font-bold text-accent border-b-2 border-accent" href="about.html">Câu chuyện</a>
+                    <a class="text-sm font-medium hover:text-accent transition-colors" href="contact.html">Liên hệ</a>
+                </nav>
+                <div class="flex items-center gap-4">
+                    <button class="p-2 rounded-full hover:bg-primary/10 transition-colors">
+                        <span class="material-symbols-outlined text-primary dark:text-accent">shopping_bag</span>
+                    </button>
+                    <button class="p-2 rounded-full hover:bg-primary/10 transition-colors">
+                        <span class="material-symbols-outlined text-primary dark:text-accent">person</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main>
+        <!-- Page Banner -->
+        <section class="relative h-[400px] w-full overflow-hidden flex items-center justify-center">
+            <div class="absolute inset-0 bg-brand-green/40 z-10"></div>
+            <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 hover:scale-105"
+                data-alt="Misty tea terrace hills at sunrise in Vietnam"
+                style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBuS6nojVSjogZQE7YBoFiEsDXJ6tTmTZfe0XeSNmMNVwg_agi5l00wBv3D6Zgp8LHXfPHdbWI9WZ1jRAwQOdT-yS8t0lScfUvu-IaSkVai3iPIufNqwPqK7okTLnDNTSdHMS94HfRKbDh-NJqe8C-3CtYATdv1Uj6GOMqNcV4p-u4KInspa4MQSF6zZJG9WtwNC12IKb0Tb54-5F9tRiSbv4SArrPNYJhUqAX0Z7Oqzffoy7BPKoHRfXvLM9SPSQ7YpRMXqIRFEm4');">
+            </div>
+            <div class="relative z-20 text-center px-4">
+                <h2 class="text-4xl md:text-6xl font-serif text-white drop-shadow-lg mb-4">Tin tức &amp; Sự kiện</h2>
+                <div class="h-1 w-24 bg-primary mx-auto rounded-full"></div>
+            </div>
+        </section>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <!-- Filter Bar -->
+            <div class="flex flex-wrap items-center justify-center gap-4 mb-16">
+                <button
+                    class="px-6 py-2 rounded-full bg-brand-green text-white text-sm font-medium border border-brand-green hover:bg-brand-green/90 transition-all">Tất
+                    cả</button>
+                <button
+                    class="px-6 py-2 rounded-full border border-brand-green/20 text-brand-green hover:border-primary transition-all text-sm font-medium">Văn
+                    hóa Trà</button>
+                <button
+                    class="px-6 py-2 rounded-full border border-brand-green/20 text-brand-green hover:border-primary transition-all text-sm font-medium">Sự
+                    kiện</button>
+                <button
+                    class="px-6 py-2 rounded-full border border-brand-green/20 text-brand-green hover:border-primary transition-all text-sm font-medium">Kiến
+                    thức</button>
+                <button
+                    class="px-6 py-2 rounded-full border border-brand-green/20 text-brand-green hover:border-primary transition-all text-sm font-medium">Khuyến
+                    mãi</button>
+            </div>
+            <!-- Featured News -->
+            <section class="mb-20">
+                <div
+                    class="group relative bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-xl flex flex-col lg:flex-row min-h-[450px] border border-brand-green/5">
+                    <div class="lg:w-3/5 overflow-hidden">
+                        <img alt="Traditional Vietnamese tea ceremony"
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                            data-alt="Elegant tea master performing a traditional tea ceremony"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBfy_Mf-py2tk-yjCRKxJNWpXoWUpDxFKrtqp2dC4REfU8WItGwL2qrW4lonQcqQXRDlPp5Naq0vwuv7UKVTylH5KlQu2AT8XqKSf1QNRcLEedVnCln2dRd7B6Aof8GnRJKF5rQPDYlPO7HfFXfIPzd95XJ4pr0WdkrnJZOBtZ4hlJvI6JiWHWWaXu3lZwM7yLWvoe_TGAzIXaEyaAs8Dp9rs0EzTsJOvddkDuKmsHCqeVY8CkKRc4qUKth2LEOsyAPSfZ_n7baI8g" />
+                    </div>
+                    <div class="lg:w-2/5 p-8 lg:p-12 flex flex-col justify-center">
+                        <span class="text-primary font-bold tracking-widest text-xs uppercase mb-3 block">Sự kiện nổi
+                            bật</span>
+                        <h3 class="text-3xl font-serif text-brand-green dark:text-primary mb-6 leading-tight">Nghệ thuật
+                            Thưởng Trà Xuân trong Không gian Di sản</h3>
+                        <p class="text-slate-600 dark:text-slate-300 mb-8 leading-relaxed">
+                            Khám phá hành trình di sản qua từng tách trà Xuân Nguyên tại buổi triển lãm văn hóa vừa qua.
+                            Một buổi tối đắm mình trong hương vị trà Shan Tuyết cổ thụ và tiếng đàn tranh du dương.
+                        </p>
+                        <div class="flex items-center justify-between mt-auto">
+                            <span class="text-sm text-slate-400">20 Tháng 5, 2024</span>
+                            <a class="inline-flex items-center gap-2 text-primary font-semibold group-hover:underline"
+                                href="#">
+                                Đọc bài viết
+                                <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- News Grid -->
+            <section class="mb-20">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                    <!-- Post 1 -->
+                    <article
+                        class="flex flex-col bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow border border-brand-green/5">
+                        <div class="relative h-64 overflow-hidden">
+                            <img class="w-full h-full object-cover"
+                                data-alt="Close up of green tea leaves in a ceramic bowl"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuB6RbnhZ-Dvl3u55yshQRd1_BRBwqtjnLsWrTx_yEb7nrUVF3RZ4eC4mal94joaf8aRgmD4n7EJ9Gu5JwzCPf7Lb4najcXTbJvDtyP9u3qSTSdLWgtY42RVJTi4wpiBJV5qiQlRQhbFN_akxgBbrcpgq78ZhcGhZaFJsb0oHuhxDtU4fPsOnERJL1HXoOAPEQtBraHRKNKLENnT1hKbAmdVhSoF3B2SEMSybKJt1ClH0JOQdVAdsz0BXb8BJHxj41qngfP35DAqHZ4" />
+                            <span
+                                class="absolute top-4 left-4 bg-brand-green text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full">Văn
+                                hóa Trà</span>
+                        </div>
+                        <div class="p-6 flex flex-1 flex-col">
+                            <h4 class="text-xl font-serif text-brand-green dark:text-primary mb-3 line-clamp-2">Nghi
+                                thức trà đạo trong đời sống người Việt hiện đại</h4>
+                            <p class="text-slate-500 text-sm mb-6 line-clamp-3">Mặc dù cuộc sống hối hả, trà đạo vẫn giữ
+                                một vị trí quan trọng trong tâm hồn người Việt, là sợi dây kết nối thế hệ.</p>
+                            <div class="mt-auto pt-4 border-t border-slate-100 flex items-center justify-between">
+                                <span class="text-xs text-slate-400 italic">15 Tháng 5, 2024</span>
+                                <a class="text-primary text-sm font-bold uppercase tracking-tighter hover:opacity-80 transition-opacity"
+                                    href="#">Xem thêm</a>
+                            </div>
+                        </div>
+                    </article>
+                    <!-- Post 2 -->
+                    <article
+                        class="flex flex-col bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow border border-brand-green/5">
+                        <div class="relative h-64 overflow-hidden">
+                            <img class="w-full h-full object-cover" data-alt="Two people drinking tea in a garden"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCjd45iUR72d7AA73Da8H5wR8eWwFyubMJ6RyzCLqR2Ij1o-6x8qFEb5V6aJmqUBgdhCK6cWAumuWA6VQTQotrbYM0xcUKvdsl_AdVgW-ChmF8n5JGnHhDNND8BUcx_e-P8JIusDdsia1enTQZoknKJdo7L8oPunsG5LQU-cwKaeIVtK54EfldckxtiqDZCe-QE7nf3-t_Hl7cg7e4UBfV6pa-KdkM9z3iBFGLhWpP3zSHCkH_-fFTLzwYOL7E7Xkjt2eU6nGYfQu8" />
+                            <span
+                                class="absolute top-4 left-4 bg-brand-green text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full">Kiến
+                                thức</span>
+                        </div>
+                        <div class="p-6 flex flex-1 flex-col">
+                            <h4 class="text-xl font-serif text-brand-green dark:text-primary mb-3 line-clamp-2">Bí quyết
+                                phân biệt Trà Shan Tuyết cổ thụ thật</h4>
+                            <p class="text-slate-500 text-sm mb-6 line-clamp-3">Làm sao để nhận biết được những búp trà
+                                được hái từ cây cổ thụ hàng trăm năm tuổi trên đỉnh Tây Côn Lĩnh?</p>
+                            <div class="mt-auto pt-4 border-t border-slate-100 flex items-center justify-between">
+                                <span class="text-xs text-slate-400 italic">10 Tháng 5, 2024</span>
+                                <a class="text-primary text-sm font-bold uppercase tracking-tighter hover:opacity-80 transition-opacity"
+                                    href="#">Xem thêm</a>
+                            </div>
+                        </div>
+                    </article>
+                    <!-- Post 3 -->
+                    <article
+                        class="flex flex-col bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow border border-brand-green/5">
+                        <div class="relative h-64 overflow-hidden">
+                            <img class="w-full h-full object-cover" data-alt="Luxury gift box of tea"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBB7vxc0mbhraAT6SY9urbkWS6qXm5S-j-p2hlKNEZRUQWpx3ADUgswwfuXBZtWwd3H5NAa_r4vKKq59fQ_MvOlfNusXfPJjDAafYUh2zk584zCR6xW5aqOVUcnEybgLw63BnQxe9YZywwBKGhTEma3c1cDoQau4ltxsN5bItoPvdtxtXdLTGUue414a3rzmBjIveQEMaRDMGjPBoHUvOp3ElvB1bfpuXDrAAd62x4mmj3vVUVC8ZpA26VKYc3jy3ICQpAFqfqof0Q" />
+                            <span
+                                class="absolute top-4 left-4 bg-brand-green text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full">Khuyến
+                                mãi</span>
+                        </div>
+                        <div class="p-6 flex flex-1 flex-col">
+                            <h4 class="text-xl font-serif text-brand-green dark:text-primary mb-3 line-clamp-2">Ưu đãi
+                                độc quyền: Bộ quà tặng "Thanh Xuân" cho ngày của Mẹ</h4>
+                            <p class="text-slate-500 text-sm mb-6 line-clamp-3">Dành tặng những điều tinh túy nhất từ
+                                thiên nhiên cho người phụ nữ tuyệt vời nhất trong cuộc đời bạn.</p>
+                            <div class="mt-auto pt-4 border-t border-slate-100 flex items-center justify-between">
+                                <span class="text-xs text-slate-400 italic">05 Tháng 5, 2024</span>
+                                <a class="text-primary text-sm font-bold uppercase tracking-tighter hover:opacity-80 transition-opacity"
+                                    href="#">Xem thêm</a>
+                            </div>
+                        </div>
+                    </article>
+                    <!-- Post 4 -->
+                    <article
+                        class="flex flex-col bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow border border-brand-green/5">
+                        <div class="relative h-64 overflow-hidden">
+                            <img class="w-full h-full object-cover" data-alt="Close up of a tea cup being filled"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAY5Ehi6oS4nWkfZ0VMjQUigc5xZs4O6VUmUcre3qBD8GvyFLOBh2nFTpNViCOhA5o4xcgwTJ6UVn3oU-IRd1Oz2gM67StqIBEyBp_q9gSgWzF7NGiCTMzpGhhryetr9yQ9u3v_CRmB0EVxhtUc9hxQjvwEOi5XXYOjfJou4mZYnYLadlKM3i-LXdgbvHQMHwlFw-KZjmInvTGna-8mestSecBbMt-QRJgvTlnGNkW-M_-_uqAVLbyVFK4pkZQ2dpYuKTg_BPtLiDk" />
+                            <span
+                                class="absolute top-4 left-4 bg-brand-green text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full">Văn
+                                hóa Trà</span>
+                        </div>
+                        <div class="p-6 flex flex-1 flex-col">
+                            <h4 class="text-xl font-serif text-brand-green dark:text-primary mb-3 line-clamp-2">Lịch sử
+                                ngàn năm của trà Việt trong văn thơ</h4>
+                            <p class="text-slate-500 text-sm mb-6 line-clamp-3">Ngược dòng thời gian để tìm lại những
+                                vần thơ bất hủ viết về chén trà nồng ấm của các bậc vĩ nhân.</p>
+                            <div class="mt-auto pt-4 border-t border-slate-100 flex items-center justify-between">
+                                <span class="text-xs text-slate-400 italic">01 Tháng 5, 2024</span>
+                                <a class="text-primary text-sm font-bold uppercase tracking-tighter hover:opacity-80 transition-opacity"
+                                    href="#">Xem thêm</a>
+                            </div>
+                        </div>
+                    </article>
+                    <!-- Post 5 -->
+                    <article
+                        class="flex flex-col bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow border border-brand-green/5">
+                        <div class="relative h-64 overflow-hidden">
+                            <img class="w-full h-full object-cover" data-alt="Traditional teapot on a wooden table"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCDf9jPCVpKXsxkVnaPhPHuoIgyWxawzTouiA-xQrZQtCzQZ-6TbUrUNebhGK7jfdE7VFOITd0re8p4w3RG926m2ewIqDznZbMgUKkY0wwjYKIobEyfawng0QRfr5hYziYfWYajHZQuu6U7Hv5WlpEs4SQj4mqfSrUaBBMi5TmPpyJTzHcJGnerRO1l9Gur7P5I-Du0hy-uv4k_3d0HC3NwlsJMotPr3J8ZRArOF4xZk4RcTtmWn8dUhKwcGd4hjq5HkbinRU5SVD0" />
+                            <span
+                                class="absolute top-4 left-4 bg-brand-green text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full">Sự
+                                kiện</span>
+                        </div>
+                        <div class="p-6 flex flex-1 flex-col">
+                            <h4 class="text-xl font-serif text-brand-green dark:text-primary mb-3 line-clamp-2">
+                                Workshop: Nghệ thuật pha trà ngon đúng điệu</h4>
+                            <p class="text-slate-500 text-sm mb-6 line-clamp-3">Tham gia cùng chuyên gia Xuân Nguyên để
+                                nắm vững nhiệt độ, thời gian và bí quyết cho tách trà hoàn mỹ.</p>
+                            <div class="mt-auto pt-4 border-t border-slate-100 flex items-center justify-between">
+                                <span class="text-xs text-slate-400 italic">28 Tháng 4, 2024</span>
+                                <a class="text-primary text-sm font-bold uppercase tracking-tighter hover:opacity-80 transition-opacity"
+                                    href="#">Xem thêm</a>
+                            </div>
+                        </div>
+                    </article>
+                    <!-- Post 6 -->
+                    <article
+                        class="flex flex-col bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow border border-brand-green/5">
+                        <div class="relative h-64 overflow-hidden">
+                            <img class="w-full h-full object-cover" data-alt="Tea field workers harvesting tea"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDfTMleVgXI059eExK5LmzI1ZR5QCtzgJcGbQOYtrHvISWCt-qtqCvDAZYtaUnY8uG9u55vhWFjarmku5iZIZ90l70kt8nzWUDFK3tpkdSwDcuF4wPdvmPYZr_z7BfOpRFbzu8oXTyrekugEmYfKfZIG8jXKLJhUdgB_904GvHF76fToFMNWJqkyWdko3QjcNVa2w9suuUdWA9xOGYj3EVkTtxmV_vxje0W31Bqr0sDr8l8qCmQZCvhRoeTzppr661yBXtkvlGm6s4" />
+                            <span
+                                class="absolute top-4 left-4 bg-brand-green text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full">Kiến
+                                thức</span>
+                        </div>
+                        <div class="p-6 flex flex-1 flex-col">
+                            <h4 class="text-xl font-serif text-brand-green dark:text-primary mb-3 line-clamp-2">Vùng trà
+                                Suối Giàng - Hơi thở của núi rừng Tây Bắc</h4>
+                            <p class="text-slate-500 text-sm mb-6 line-clamp-3">Khám phá nguồn gốc của những sản phẩm
+                                tinh túy nhất từ vùng đất Yên Bái huyền thoại.</p>
+                            <div class="mt-auto pt-4 border-t border-slate-100 flex items-center justify-between">
+                                <span class="text-xs text-slate-400 italic">22 Tháng 4, 2024</span>
+                                <a class="text-primary text-sm font-bold uppercase tracking-tighter hover:opacity-80 transition-opacity"
+                                    href="#">Xem thêm</a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </section>
+            <!-- Newsletter CTA -->
+            <section class="bg-brand-green rounded-2xl p-8 md:p-12 relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-3xl -mr-32 -mt-32"></div>
+                <div class="absolute bottom-0 left-0 w-48 h-48 bg-primary/10 rounded-full blur-3xl -ml-24 -mb-24"></div>
+                <div class="relative z-10 max-w-2xl mx-auto text-center">
+                    <h3 class="text-2xl md:text-3xl font-serif text-white mb-4">Nhận bản tin trà Xuân Nguyên</h3>
+                    <p class="text-slate-300 mb-8">Đăng ký để nhận thông tin về các sản phẩm mới, sự kiện văn hóa và
+                        kiến thức thưởng trà hàng tháng.</p>
+                    <form class="flex flex-col sm:flex-row gap-3">
+                        <input
+                            class="flex-1 rounded-xl bg-white/10 border-white/20 text-white placeholder:text-white/50 focus:ring-primary focus:border-primary"
+                            placeholder="Địa chỉ email của bạn" type="email" />
+                        <button
+                            class="bg-primary hover:bg-primary/90 text-brand-green font-bold px-8 py-3 rounded-xl transition-colors"
+                            type="submit">Đăng ký ngay</button>
+                    </form>
+                </div>
+            </section>
+        </div>
+    </main>
+    <!-- Footer -->
+    <footer class="bg-[#0e2717] text-gray-300 py-16 border-t border-accent/20" id="contact">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+                <!-- Logo and About -->
+                <div class="col-span-1 md:col-span-1">
+                    <a class="text-accent text-3xl font-elephant font-bold block mb-6" href="#">Xuân Nguyên</a>
+                    <p class="text-sm leading-relaxed opacity-70">
+                        Trà từ những cây cổ thụ hàng trăm năm tuổi vùng Tây Bắc Việt Nam. Mang tinh hoa đất trời vào
+                        từng tách trà.
+                    </p>
+                </div>
+                <!-- Links -->
+                <div>
+                    <h4 class="text-white font-semibold uppercase tracking-widest mb-6 text-sm">Khám Phá</h4>
+                    <ul class="space-y-4 text-sm">
+                        <li><a class="hover:text-accent" href="#">Sản phẩm mới</a></li>
+                        <li><a class="hover:text-accent" href="#">Bộ quà tặng</a></li>
+                        <li><a class="hover:text-accent" href="#">Chính sách đại lý</a></li>
+                        <li><a class="hover:text-accent" href="#">Hướng dẫn mua hàng</a></li>
+                    </ul>
+                </div>
+                <!-- Contact Info -->
+                <div>
+                    <h4 class="text-white font-semibold uppercase tracking-widest mb-6 text-sm">Liên Hệ</h4>
+                    <ul class="space-y-4 text-sm">
+                        <li class="flex items-start gap-3">
+                            <svg class="h-5 w-5 text-accent" fill="none" stroke="currentColor" viewbox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z">
+                                </path>
+                                <path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                            </svg>
+                            <span>Vùng nguyên liệu: Suối Giàng, Văn Chấn, Yên Bái</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <svg class="h-5 w-5 text-accent" fill="none" stroke="currentColor" viewbox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 004.516 4.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z">
+                                </path>
+                            </svg>
+                            <span>+84 (0) 900 123 456</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <svg class="h-5 w-5 text-accent" fill="none" stroke="currentColor" viewbox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+                                </path>
+                            </svg>
+                            <span>contact@xuannguyen.vn</span>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Newsletter -->
+                <div>
+                    <h4 class="text-white font-semibold uppercase tracking-widest mb-6 text-sm">Nhận Tin</h4>
+                    <p class="text-xs mb-4 opacity-70">Nhận thông tin về các mùa trà mới nhất và ưu đãi đặc quyền.</p>
+                    <form class="flex">
+                        <input
+                            class="bg-white/5 border-white/20 text-sm focus:ring-accent focus:border-accent w-full p-2.5"
+                            placeholder="Email của bạn" type="email" />
+                        <button class="bg-accent text-primary p-2.5 hover:bg-yellow-600 transition-colors"
+                            type="submit">
+                            <svg class="h-5 w-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M14 5l7 7m0 0l-7 7m7-7H3" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="2"></path>
+                            </svg>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            <div
+                class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center text-xs opacity-50 space-y-4 md:space-y-0">
+                <p>© 2023 Xuân Nguyên Tea. All rights reserved.</p>
+                <div class="flex space-x-6">
+                    <a class="hover:text-accent" href="#">Facebook</a>
+                    <a class="hover:text-accent" href="#">Instagram</a>
+                    <a class="hover:text-accent" href="#">Youtube</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

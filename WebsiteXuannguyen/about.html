@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+
+<html lang="vi">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1A472A", // Dark Green
+                        "accent": "#D4AF37", // Gold
+                        "background-light": "#F9F6F0", // Soft off-white
+                        "background-dark": "#121d14",
+                    },
+                    fontFamily: {
+                        "display": ["Public Sans", "sans-serif"],
+                        "serif": ["Elephant", "serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        .font-elephant {
+            font-family: 'Elephant', 'Garamond', serif;
+            letter-spacing: 0.05em;
+        }
+
+        .sticky-nav {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+    </style>
+</head>
+
+<body
+    class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 transition-colors duration-300">
+    <!-- Header / Navigation -->
+    <header
+        class="sticky-nav bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md border-b border-primary/10 dark:border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center gap-2">
+                    <span class="material-symbols-outlined text-primary dark:text-accent text-3xl">eco</span>
+                    <h1 class="text-2xl font-logo font-bold text-primary dark:text-accent tracking-tight">Xuân Nguyên
+                    </h1>
+                </div>
+                <nav class="hidden md:flex space-x-8 items-center">
+                    <a class="text-sm font-medium hover:text-accent transition-colors" href="index.html">Trang chủ</a>
+                    <a class="text-sm font-medium hover:text-accent transition-colors" href="product.html">Sản phẩm</a>
+                    <a class="text-sm font-bold text-accent border-b-2 border-accent" href="about.html">Câu chuyện</a>
+                    <a class="text-sm font-medium hover:text-accent transition-colors" href="contact.html">Liên hệ</a>
+                </nav>
+                <div class="flex items-center gap-4">
+                    <button class="p-2 rounded-full hover:bg-primary/10 transition-colors">
+                        <span class="material-symbols-outlined text-primary dark:text-accent">shopping_bag</span>
+                    </button>
+                    <button class="p-2 rounded-full hover:bg-primary/10 transition-colors">
+                        <span class="material-symbols-outlined text-primary dark:text-accent">person</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Hero Banner -->
+    <section class="relative h-[400px] flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 bg-primary/40 z-10"></div>
+        <div class="absolute inset-0 bg-cover bg-center" data-alt="Cảnh đồi chè cổ thụ mờ sương trong nắng sớm"
+            style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAZHEvLY6jb0z-vSt6A1zRoLsQDgGG07qC-Lkm3ncJj6iI7aByi9gl4B82RlH3wpH4J0ePIToWKSpRZOMMoqcHzN7RtiEjgYeeHSLnxegfA4NgPoCyWC7-FdG75YNJpqSkNtWkEvc57hRLV-uCTWJEaCV2bL2iS8GAHTTL1qjbUa8iCgGzZntHtk7HGf9JdAarR3iCSxHwjRLw2zElcGqdPXHly2UPYHe20Dn3b-przoae9vW0fO_FtVp_6_sGkzgKWfJBBZCg9pbE')">
+        </div>
+        <div class="relative z-20 text-center px-4">
+            <h2 class="text-4xl md:text-5xl font-bold text-white mb-4 tracking-wide">Câu Chuyện Xuân Nguyên</h2>
+            <div class="w-24 h-1 bg-accent mx-auto"></div>
+        </div>
+    </section>
+    <!-- Brand Origin -->
+    <section class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+            <div class="order-2 md:order-1">
+                <span class="text-accent font-bold tracking-widest uppercase text-sm">Khởi nguồn &amp; Sứ mệnh</span>
+                <h3 class="text-3xl font-bold text-primary dark:text-white mt-4 mb-6 leading-snug">Hành trình từ những
+                    đỉnh núi cao Tây Bắc</h3>
+                <p class="text-lg text-slate-600 dark:text-slate-400 mb-6 leading-relaxed">
+                    Kết tinh từ sương sớm và tinh hoa đất trời vùng Tây Bắc, Xuân Nguyên mang sứ mệnh bảo tồn những giá
+                    trị trà cổ thụ nguyên bản. Chúng tôi tin rằng mỗi búp trà không chỉ là thức uống, mà còn là linh hồn
+                    của núi rừng và đôi bàn tay khéo léo của những người nghệ nhân bản địa.
+                </p>
+                <p class="text-lg text-slate-600 dark:text-slate-400 leading-relaxed">
+                    Được thành lập với khát khao đưa trà Việt vươn tầm thế giới, Xuân Nguyên cam kết giữ vững hương vị
+                    mộc mạc nhưng thanh cao, kết nối tâm hồn người thưởng trà với thiên nhiên hùng vĩ.
+                </p>
+            </div>
+            <div class="order-1 md:order-2 rounded-xl overflow-hidden shadow-2xl">
+                <img alt="Người dân tộc hái chè trên núi cao" class="w-full h-full object-cover"
+                    data-alt="Cận cảnh đôi tay người dân tộc hái búp trà xanh"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuCLFvcYkSMlwuhnp4zRNwYS-bA0hijWRvwtwZgv0qEXo8G7yN_ccxKlOki3i8AsANd238Kcmyx-gJ9sBLNgeN2S5E509LLhxNzBt_OknM6eYx3oFtrvDFOINqcen9oi0r3BJVTDodNeatzG3fuvAnGtys6WRtYuy1YjFhuhTeC4MRj4vcirA_sYusIJMoXF8Scm6ojhwJIjx8Suswh3W4CJ5h2tDpGRiGBxPJPwAVBVe0YFdJyLPymnR03k17cTFdHcipY-1YSGMaQ" />
+            </div>
+        </div>
+    </section>
+    <!-- Core Values -->
+    <section class="bg-primary py-20 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h3 class="text-3xl font-bold mb-4">Giá Trị Cốt Lõi</h3>
+                <div class="w-16 h-1 bg-accent mx-auto"></div>
+            </div>
+            <div class="grid md:grid-cols-3 gap-12 text-center">
+                <div
+                    class="p-8 rounded-xl bg-white/5 border border-white/10 hover:border-accent transition-colors group">
+                    <span class="material-symbols-outlined text-5xl text-accent mb-6">verified</span>
+                    <h4 class="text-xl font-bold mb-4">Chất Lượng</h4>
+                    <p class="text-slate-300">Từng búp trà 1 tôm 2 lá được tuyển chọn kỹ lưỡng từ những gốc trà cổ thụ
+                        hàng trăm năm tuổi.</p>
+                </div>
+                <div class="p-8 rounded-xl bg-white/5 border border-white/10 hover:border-accent transition-colors">
+                    <span class="material-symbols-outlined text-5xl text-accent mb-6">history_edu</span>
+                    <h4 class="text-xl font-bold mb-4">Truyền Thống</h4>
+                    <p class="text-slate-300">Lưu giữ phương pháp sao trà thủ công truyền đời của những nghệ nhân làm
+                        trà tài hoa nhất.</p>
+                </div>
+                <div class="p-8 rounded-xl bg-white/5 border border-white/10 hover:border-accent transition-colors">
+                    <span class="material-symbols-outlined text-5xl text-accent mb-6">psychology_alt</span>
+                    <h4 class="text-xl font-bold mb-4">Bền Vững</h4>
+                    <p class="text-slate-300">Cam kết bảo tồn vùng nguyên liệu và hỗ trợ sinh kế cho đồng bào dân tộc
+                        thiểu số địa phương.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- The Process -->
+    <section class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <h3 class="text-3xl font-bold text-primary dark:text-white mb-4">Nghệ Thuật Chế Biến</h3>
+            <p class="text-slate-600 dark:text-slate-400">Quy trình thủ công tỉ mỉ tạo nên hương vị thượng hạng</p>
+        </div>
+        <div class="relative">
+            <div class="hidden md:block absolute top-1/2 left-0 w-full h-0.5 bg-accent/30 -translate-y-1/2"></div>
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="relative bg-background-light dark:bg-background-dark z-10 px-4">
+                    <div
+                        class="w-16 h-16 bg-accent text-primary rounded-full flex items-center justify-center font-bold text-2xl mx-auto mb-6">
+                        01</div>
+                    <h5 class="font-bold text-lg mb-2 text-center">Hái Trà</h5>
+                    <p class="text-sm text-slate-500 text-center">Hái tay vào lúc sương sớm chưa tan để giữ trọn độ
+                        tươi.</p>
+                </div>
+                <div class="relative bg-background-light dark:bg-background-dark z-10 px-4">
+                    <div
+                        class="w-16 h-16 bg-accent text-primary rounded-full flex items-center justify-center font-bold text-2xl mx-auto mb-6">
+                        02</div>
+                    <h5 class="font-bold text-lg mb-2 text-center">Làm Héo</h5>
+                    <p class="text-sm text-slate-500 text-center">Trà được rải mỏng trên mẹt tre để giảm bớt độ ẩm tự
+                        nhiên.</p>
+                </div>
+                <div class="relative bg-background-light dark:bg-background-dark z-10 px-4">
+                    <div
+                        class="w-16 h-16 bg-accent text-primary rounded-full flex items-center justify-center font-bold text-2xl mx-auto mb-6">
+                        03</div>
+                    <h5 class="font-bold text-lg mb-2 text-center">Vò &amp; Sao</h5>
+                    <p class="text-sm text-slate-500 text-center">Nghệ nhân dùng đôi tay cảm nhận nhiệt để sao trà đạt
+                        độ khô chuẩn.</p>
+                </div>
+                <div class="relative bg-background-light dark:bg-background-dark z-10 px-4">
+                    <div
+                        class="w-16 h-16 bg-accent text-primary rounded-full flex items-center justify-center font-bold text-2xl mx-auto mb-6">
+                        04</div>
+                    <h5 class="font-bold text-lg mb-2 text-center">Đóng Gói</h5>
+                    <p class="text-sm text-slate-500 text-center">Hút chân không và đóng gói trong bao bì sang trọng để
+                        bảo quản.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Team / Founders -->
+    <section class="py-20 bg-accent/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-3xl mx-auto text-center">
+                <h3 class="text-3xl font-bold text-primary mb-8">Người Truyền Lửa</h3>
+                <div class="flex flex-col items-center">
+                    <div class="w-32 h-32 rounded-full border-4 border-accent mb-6 overflow-hidden">
+                        <img alt="Founder Portrait" class="w-full h-full object-cover"
+                            data-alt="Chân dung người sáng lập thương hiệu trà Xuân Nguyên"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBOJ8-3hqTwebjx9-PDhj8Cf2vDPv0MDORc1YKMHkeSXrVcD-i0P0SWphHmNwJv6_fnfCjObLcbtOiYME8hlAVveG_hPswBsqRJX2tZuVwgz4DOJy5vPnw_AlEOzJ91E9jSILf4mSEYMMXtzMWH-Xauo6af0K4E198iR-4k965mpctXQW1S-SuD1RwPjXRiAmFg4gdwLUfI4Eiqlwrh0HGy05eH1j31YVfpy_JB04Djxy4fQL0nU36T66yk-5JodFqnbMPrGFppt2U" />
+                    </div>
+                    <h4 class="text-xl font-bold text-primary mb-2">Nghệ nhân Xuân Nguyên</h4>
+                    <p class="text-slate-600 mb-6 italic">"Trà không chỉ là một thức uống, đó là sự chiêm nghiệm về thời
+                        gian và lòng kiên nhẫn."</p>
+                    <p class="text-slate-700 leading-relaxed">
+                        Với hơn 30 năm gắn bó với các vùng trà cổ thụ, người sáng lập của chúng tôi đã dành trọn tâm
+                        huyết để tìm tòi và phục dựng những dòng trà quý hiếm của Việt Nam.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer class="bg-[#0e2717] text-gray-300 py-16 border-t border-accent/20" id="contact">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+                <!-- Logo and About -->
+                <div class="col-span-1 md:col-span-1">
+                    <a class="text-accent text-3xl font-elephant font-bold block mb-6" href="#">Xuân Nguyên</a>
+                    <p class="text-sm leading-relaxed opacity-70">
+                        Trà từ những cây cổ thụ hàng trăm năm tuổi vùng Tây Bắc Việt Nam. Mang tinh hoa đất trời vào
+                        từng tách trà.
+                    </p>
+                </div>
+                <!-- Links -->
+                <div>
+                    <h4 class="text-white font-semibold uppercase tracking-widest mb-6 text-sm">Khám Phá</h4>
+                    <ul class="space-y-4 text-sm">
+                        <li><a class="hover:text-accent" href="#">Sản phẩm mới</a></li>
+                        <li><a class="hover:text-accent" href="#">Bộ quà tặng</a></li>
+                        <li><a class="hover:text-accent" href="#">Chính sách đại lý</a></li>
+                        <li><a class="hover:text-accent" href="#">Hướng dẫn mua hàng</a></li>
+                    </ul>
+                </div>
+                <!-- Contact Info -->
+                <div>
+                    <h4 class="text-white font-semibold uppercase tracking-widest mb-6 text-sm">Liên Hệ</h4>
+                    <ul class="space-y-4 text-sm">
+                        <li class="flex items-start gap-3">
+                            <svg class="h-5 w-5 text-accent" fill="none" stroke="currentColor" viewbox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z">
+                                </path>
+                                <path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                            </svg>
+                            <span>Vùng nguyên liệu: Suối Giàng, Văn Chấn, Yên Bái</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <svg class="h-5 w-5 text-accent" fill="none" stroke="currentColor" viewbox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 004.516 4.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z">
+                                </path>
+                            </svg>
+                            <span>+84 (0) 900 123 456</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <svg class="h-5 w-5 text-accent" fill="none" stroke="currentColor" viewbox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+                                </path>
+                            </svg>
+                            <span>contact@xuannguyen.vn</span>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Newsletter -->
+                <div>
+                    <h4 class="text-white font-semibold uppercase tracking-widest mb-6 text-sm">Nhận Tin</h4>
+                    <p class="text-xs mb-4 opacity-70">Nhận thông tin về các mùa trà mới nhất và ưu đãi đặc quyền.</p>
+                    <form class="flex">
+                        <input
+                            class="bg-white/5 border-white/20 text-sm focus:ring-accent focus:border-accent w-full p-2.5"
+                            placeholder="Email của bạn" type="email" />
+                        <button class="bg-accent text-primary p-2.5 hover:bg-yellow-600 transition-colors"
+                            type="submit">
+                            <svg class="h-5 w-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M14 5l7 7m0 0l-7 7m7-7H3" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="2"></path>
+                            </svg>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            <div
+                class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center text-xs opacity-50 space-y-4 md:space-y-0">
+                <p>© 2023 Xuân Nguyên Tea. All rights reserved.</p>
+                <div class="flex space-x-6">
+                    <a class="hover:text-accent" href="#">Facebook</a>
+                    <a class="hover:text-accent" href="#">Instagram</a>
+                    <a class="hover:text-accent" href="#">Youtube</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
